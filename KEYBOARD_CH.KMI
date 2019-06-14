@@ -1,0 +1,386 @@
+###########################################################
+# SWISS-GERMAN KEYBORD MAPPINGS FOR THE EMU48
+# GNU GPL3 
+# © 2019 by Meinrad Ruckstuhl 
+###########################################################
+
+###########################################################
+# Limitations:
+# - since EMU48 does have the same scancode for "AltGr" and
+#   "Ctrl" their function is absolutely identical
+###########################################################
+
+###########################################################
+# TODO:
+# - + if Shift 1 is pressed
+# - / if Shift 7 is pressed
+# - [
+# - {
+# - _
+# - :
+# - implementation of special charactors acociated with 
+#   "AltGr"
+# - "Chaps Lock" for typing letters
+# - Copy String, Copy Screen, Paste String
+###########################################################
+
+###########################################################
+# Flags:
+# Flag 0 => Shift
+# Flag 1 => Ctrl
+###########################################################
+
+##########################################################
+# How to get Status auf Annunciators:
+# Return True if the annunciator
+# IfMem 267 4 0	# =ANNCTRL 48SX/GX & ALPHA annunciator
+# IfMem 267 3 0	# =ANNCTRL 48SX/GX & LEFT annunciator
+# IfMem 267 2 0	# =ANNCTRL 48SX/GX & REIGHT annunciator
+###########################################################
+
+Scancode 8			# <-
+	Map 8 55
+End
+
+Scancode 9			# Tab
+	Map 9 61
+End
+
+Scancode 13			# Enter
+	Map 13 51
+End
+
+Scancode 16			# Shift
+	ResetFlag 3
+	IfPressed 16
+		SetFlag 0
+		Press 71
+	Else
+		ResetFlag 0
+		Release 71
+	End
+End
+
+Scancode 17			# Control
+	ResetFlag 2
+	IfPressed 17
+		SetFlag 1
+		Press 81
+	Else
+		ResetFlag 1
+		Release 81
+	End
+End
+
+Scancode 20			# Caps Lock
+End
+
+Scancode 27			# Esc
+	Map 27 91
+End
+
+Scancode 32			# Space
+	Map 32 94
+End
+
+Scancode 37			# Left
+	Map 37 34
+End
+
+Scancode 38			# Up
+	Map 38 25
+End
+
+Scancode 39			# Reight
+	Map 39 36
+End
+
+Scancode 40			# Down
+	Map 40 35
+End
+
+Scancode 46			# Delete
+	Map 46 54
+End
+
+Scancode 48		# 0
+	IfFlag 0
+		Map 48 71
+		Map 48 92
+	Else
+		Map 48 92
+	End
+End
+
+Scancode 49			# 1
+	Map 49 82
+End
+
+Scancode 50		# 2
+	IfFlag 0
+		Release 71
+		Map 50 81
+		Map 50 85
+		Press 71
+	Else
+		Map 50 83
+	End
+End
+
+Scancode 51		# 3
+	IfFlag 0
+		Map 51 75
+	Else
+		Map 51 84
+	End
+End
+
+Scancode 52		# 4
+	Map 52 72
+End
+
+Scancode 53		# 5
+	Map 53 73
+End
+
+Scancode 54		# 6
+	Map 54 74
+End
+
+Scancode 55		# 7
+	Map 55 62
+End
+
+Scancode 56		# 8
+	IfFlag 0
+		Map 56 71
+		Map 56 65
+	Else
+		Map 56 63
+	End
+End
+
+Scancode 57		# 9
+	Map 57 64
+End
+
+Scancode 65		# A
+	Map 65 11
+End
+
+Scancode 66
+	Map 66 12
+End
+
+Scancode 67		# C
+	Map 67 13
+End
+
+Scancode 68		# D
+	Map 68 14
+End
+
+Scancode 69
+	Map 69 15
+End
+
+Scancode 70
+	Map 70 16
+End
+
+Scancode 71
+	Map 71 21
+End
+
+Scancode 72
+	Map 72 22
+End
+
+Scancode 73
+	Map 73 23
+End
+
+Scancode 74
+	Map 74 24
+End
+
+Scancode 75
+	Map 75 25
+End
+
+Scancode 76
+	Map 76 26
+End
+
+Scancode 77		# M
+	IfFlag 1
+		Release 81
+		Press 81
+		Release 81
+		SysItem 61472		# minimize Window
+	Else
+		Map 77 31
+	End
+End
+
+Scancode 78		# N
+	Map 78 32
+End
+
+Scancode 79
+	Map 79 33
+End
+
+Scancode 80
+	Map 80 34
+End
+
+Scancode 81		# Q
+	IfFlag 1
+		Release 81
+		Press 81
+		Release 81
+		SysItem 61536	# Quit
+	Else
+		Map 81 35
+	End
+End
+
+Scancode 82
+	Map 82 36
+End
+
+Scancode 83
+	Map 83 41
+End
+
+Scancode 84
+	Map 84 42
+End
+
+Scancode 85
+	Map 85 43
+End
+
+Scancode 86		# V
+	Map 86 44
+End
+
+Scancode 87
+	Map 87 45
+End
+
+Scancode 88		# X
+	Map 88 46
+End
+
+Scancode 89
+	Map 89 52
+End
+
+Scancode 90		# Z
+	Map 90 53
+End
+
+Scancode 96		# Numpad 0
+	Map 96 92
+End
+
+Scancode 97
+	Map 97 82
+End
+
+Scancode 98
+	Map 98 83
+End
+
+Scancode 99
+	Map 99 84
+End
+
+Scancode 100
+	Map 100 72
+End
+
+Scancode 101
+	Map 101 73
+End
+
+Scancode 102
+	Map 102 74
+End
+
+Scancode 103
+	Map 103 62
+End
+
+Scancode 104
+	Map 104 63
+End
+
+Scancode 105	# Numpad 9
+	Map 105 64
+End
+
+Scancode 106	# Numpad *
+	Map 106 75
+End
+
+Scancode 107	# Numpad +
+	Map 107 95
+End
+
+Scancode 109	# NUmpad -
+	Map 109 85
+End
+
+Scancode 110	# Numpad .
+	Map 110 93
+End
+
+Scancode 111	# Numpad /
+	Map 111 65
+End
+
+Scancode 186	# [ (ü and AltGr)
+	# TODO
+End
+
+Scancode 188	# ,
+	Map 188 71
+	Map 188 93
+End
+
+Scancode 189	# -
+	# TODO _
+	Map 189 85
+End
+
+Scancode 190	# .
+	# TODO :
+	Map 190 93
+End
+
+Scancode 191	# °
+End
+
+Scancode 192	# !
+End
+
+Scancode 219	# '
+	Map 219 31
+End
+
+Scancode 220	# { (ä and AltGr)
+	# TODO
+End
+
+Scancode 222	# ö
+End
+
+Scancode 226	# <
+	Map 226 71
+	Map 226 85
+End
+
+

@@ -401,7 +401,7 @@ End
 Button 82
 	Type 5
 		Size 216 135
-        Offset 216 1502
+        Offset 241 1502
 	OutIn 1 8
 End
 Button 83
